@@ -1,91 +1,110 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+'use client'
+import Button from '@/components/ui/Button';
+import Paragraph from '@/components/ui/Paragraph';
+import { parseHtml } from '@lib/utils'
+import { fetchData } from '@lib/utils';
+import Cercle from '@/components/ui/Cercle';
+import Image from 'next/image';
+import Swipper from '@/components/ui/Swipper';
+import { motion } from "framer-motion";
+import React from 'react';
+const Home = ({ }) => {
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+  // const request = await fetchData("_index.md")
+  const request = {
+    banner: {
+      "title": "Andromeda is the most intuitive </br> way to prototype Designs",
+      "image": "/images/banner-app.png",
+      "link": {
+        "label": "Get Premium Version",
+        "href": "#"
+      }
+    }, brands: [
+      "/images/brands/01-colored.png",
+      "/images/brands/02-colored.png",
+      "/images/brands/03-colored.png",
+      "/images/brands/04-colored.png",
+      "/images/brands/05-colored.png",
+      "/images/brands/06-colored.png",
+      "/images/brands/04-colored.png",
+      "/images/brands/05-colored.png",
+      "/images/brands/06-colored.png"
+    ]
+  }
+  const { banner, brands, } = request
+  // const { banner, brands, features, intro } = request
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.5,
+        staggerChildren: 1
+      }
+    }
+  };
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div className='w-full block  '
+    >
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className={`  container relative bg-theme flex flex-col   bg-[url('../../public/images/vectors/single-banner-wave-1.svg')] items-center justify-center p-10 `}       
+     >
+      
+          <motion.div
+          initial='hidden'
+          variants={container} animate='visible' className='z-10' 
         >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
+          <motion.div variants={item}>
+            <Paragraph size='title'>
+              {parseHtml(banner.title)}
+            </Paragraph>
+          </motion.div>
+          </motion.div>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+
+        <motion.div    initial='hidden'
+          variants={container} animate='visible' className='flex items-center justify-center mt-10'>
+          <motion.div variants={item}>
+            <Button size='lg' className='z-10' >
+              {banner.link.label}
+            </Button>
+          </motion.div>
+
+
+        </motion.div>
+        <Cercle fill width={50} height={50} className='left-24 top-64' />
+        <Cercle fill={false} width={45} height={45} className='right-[20%] top-32' />
+        <Cercle width={36} height={36} className='top-[40%] left-48' />
+        <Cercle width={80} height={80} className='right-10 bottom-40' />
+        <Cercle fill width={80} height={80} className='right-10 lg:top-40 xs:top-2' />
+        <Cercle width={100} height={100} className='lg:right-[30%] left-10 top-3 lg:top-64' />
+        <Cercle width={70} height={70} className='right-[50%] top-2/3' />
+        <Cercle width={55} height={55} className='left-[10%]' />
+        <Cercle fill width={90} height={90} className='right-[51%] lg:block hidden' />
+        <Cercle fill width={60} height={60} className='right-[10%] top-1/2' />
+        <motion.div   initial='hidden'
+          variants={container} animate='visible' className='flex items-center justify-center mt-10'>
+          <motion.div variants={item}>
+            <Image src={banner.image} alt='banner image' width={1170}
+              height={666}
+              priority={true} className='mt-10 z-10' />
+          </motion.div>
+        </motion.div>
       </div>
-    </main>
-  )
-}
+      <Swipper brands={brands} />
+      <section>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
