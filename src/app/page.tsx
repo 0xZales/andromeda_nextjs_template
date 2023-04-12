@@ -1,4 +1,3 @@
-'use client'
 import Button from '@/components/ui/Button';
 import Paragraph from '@/components/ui/Paragraph';
 import { parseHtml } from '@lib/utils'
@@ -8,7 +7,9 @@ import Image from 'next/image';
 import Swipper from '@/components/ui/Swipper';
 import { motion } from "framer-motion";
 import React from 'react';
-const Home = ({ }) => {
+import MotionContainer from '@/components/ui/MotionContainer';
+import MotionItem from '@/components/ui/MotionItem';
+const Home = async ({ }) => {
 
   // const request = await fetchData("_index.md")
   const request = {
@@ -55,32 +56,24 @@ const Home = ({ }) => {
     <div className='w-full block  '
     >
 
-      <div className={`  container relative bg-theme flex flex-col   bg-[url('../../public/images/vectors/single-banner-wave-1.svg')] items-center justify-center p-10 `}       
-     >
-      
-          <motion.div
-          initial='hidden'
-          variants={container} animate='visible' className='z-10' 
+      <div className={`  container relative bg-theme flex flex-col   bg-[url('../../public/images/vectors/single-banner-wave-1.svg')] items-center justify-center p-10 `}
+      >
+        <MotionContainer tag='div' container={container} className='z-10'>
+
+          <Paragraph size='title'>
+            {parseHtml(banner.title)} dd
+          </Paragraph>
+        </MotionContainer>
+
+        <MotionContainer tag='div' 
+          container={container} className='flex items-center justify-center mt-10'
         >
-
-          <motion.div variants={item}>
-            <Paragraph size='title'>
-              {parseHtml(banner.title)}
-            </Paragraph>
-          </motion.div>
-          </motion.div>
-
-
-        <motion.div    initial='hidden'
-          variants={container} animate='visible' className='flex items-center justify-center mt-10'>
-          <motion.div variants={item}>
+          <MotionItem item={item} tag='div'>
             <Button size='lg' className='z-10' >
               {banner.link.label}
             </Button>
-          </motion.div>
-
-
-        </motion.div>
+          </MotionItem>
+        </MotionContainer>
         <Cercle fill width={50} height={50} className='left-24 top-64' />
         <Cercle fill={false} width={45} height={45} className='right-[20%] top-32' />
         <Cercle width={36} height={36} className='top-[40%] left-48' />
@@ -91,14 +84,13 @@ const Home = ({ }) => {
         <Cercle width={55} height={55} className='left-[10%]' />
         <Cercle fill width={90} height={90} className='right-[51%] lg:block hidden' />
         <Cercle fill width={60} height={60} className='right-[10%] top-1/2' />
-        <motion.div   initial='hidden'
-          variants={container} animate='visible' className='flex items-center justify-center mt-10'>
-          <motion.div variants={item}>
+        <MotionContainer tag='div' container={container}  className='flex items-center justify-center mt-10 z-10'>
+          <MotionItem item={item} tag='div'>
             <Image src={banner.image} alt='banner image' width={1170}
               height={666}
               priority={true} className='mt-10 z-10' />
-          </motion.div>
-        </motion.div>
+          </MotionItem>
+        </MotionContainer>
       </div>
       <Swipper brands={brands} />
       <section>
