@@ -1,19 +1,19 @@
 'use client'
 import { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from "swiper";
+import { Autoplay } from "swiper";
 import Image from 'next/image';
 import 'swiper/swiper.min.css'
 interface SwipperProps {
   brands: string[]
 };
 
-const Swipper: FC<SwipperProps> = ({ brands }) => {
+const BrandSwiper: FC<SwipperProps> = ({ brands }) => {
   return (
 
     <div className=' '>
       <Swiper
-    className='h-24'
+    className='border '
       loop={true}
       slidesPerView={3}
       breakpoints={{
@@ -27,7 +27,7 @@ const Swipper: FC<SwipperProps> = ({ brands }) => {
     >
       {brands.map((brand, index) => (
         <SwiperSlide
-          className=" h-20 cursor-pointer py-6 px-6 grayscale  transition hover:bg-black lg:px-10"
+          className=" h-20 cursor-pointer py-6 px-6 grayscale  transition hover:grayscale-0 lg:px-10 "
           key={"brand-" + index}
         >
           <div className="relative h-full">
@@ -48,4 +48,4 @@ const Swipper: FC<SwipperProps> = ({ brands }) => {
   );
 };
 
-export default Swipper;
+export default BrandSwiper;

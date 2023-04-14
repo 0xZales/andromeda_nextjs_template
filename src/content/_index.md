@@ -26,32 +26,32 @@ features:
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas </br>
     Werat viverra id et aliquet. vulputate egestas sollicitudin.
   list:
-    - icon: "lock" # feather icon: https://feathericons.com/
+    - icon: "ShieldCheck" # feather icon: https://feathericons.com/
       title: Updated Security
       content:
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque enim id
         diam ornare volutpat in sagitis, aliquet. Arcu cursus
-    - icon: "wind"
+    - icon: "Wind"
       title: Magnetic Turning
       content:
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque enim id
         diam ornare volutpat in sagitis, aliquet. Arcu cursus
-    - icon: "shield"
+    - icon: "Shield"
       title: Secured & up-to-date
       content:
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque enim id
         diam ornare volutpat in sagitis, aliquet. Arcu cursus
-    - icon: "link"
+    - icon: "Link"
       title: Instant Link Sharing
       content:
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque enim id
         diam ornare volutpat in sagitis, aliquet. Arcu cursus
-    - icon: "lock"
+    - icon: "Lock"
       title: Updated Security
       content:
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque enim id
         diam ornare volutpat in sagitis, aliquet. Arcu cursus
-    - icon: "wind"
+    - icon: "Wind"
       title: Magnetic Turning
       content:
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque enim id

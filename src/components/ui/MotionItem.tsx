@@ -1,29 +1,26 @@
-
 'use client'
 import { FC, ReactNode, HTMLAttributes, forwardRef } from 'react';
-import {createDomMotionComponent ,DOMMotionComponents} from "framer-motion";
+import { createDomMotionComponent, DOMMotionComponents,MotionProps } from "framer-motion";
 type MotionTagName = keyof DOMMotionComponents;
-interface MotionItemProps extends HTMLAttributes<HTMLElement> {
-    item: {
-        hidden: { y: number, opacity: number },
-        visible: {
-            y: number,
-            opacity: number
-        }
+interface MotionItemProps extends MotionProps{
+    item?: {
     },
-    tag:MotionTagName 
-
+    tag: MotionTagName,
+    className?:string
 };
-
-const MotionItem: FC<MotionItemProps> = ({ children, item,className,tag}) => {
+// HTMLAttributes<HTMLElement>,
+// className, 
+const MotionItem: FC<MotionItemProps> = ({ children, item, tag,className,...props }) => {
     const motion = {
         element: createDomMotionComponent(tag)
-       }
-   return (
-     <motion.element animate='visible' initial='hidden' variants={item} className={className}>
-       {children}
-     </motion.element>
-   );
- };
-MotionItem.displayName= "MotionItem"
+    }
+    return (
+        <motion.element variants={ item} {...props}
+        className={className}
+        >
+            {children}
+        </motion.element>
+    );
+};
+MotionItem.displayName = "MotionItem"
 export default MotionItem;

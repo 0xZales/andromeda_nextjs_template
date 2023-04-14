@@ -1,4 +1,4 @@
-'use '
+import Banner from '@/components/ui/Banner'
 import { FC } from 'react';
 interface pageProps {
 };
@@ -6,8 +6,11 @@ interface pageProps {
 const page= async ({  }) => {
 
   return (
-    <div>
-    </div>
+    <main>
+      <Banner>
+        
+      </Banner>
+    </main>
   );
 };
 

@@ -5,6 +5,8 @@ import Button from '@/components/ui/Button';
 import * as headerElement from '@/components/index'
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import MotionContainer from '@/components/ui/MotionContainer';
+import MotionItem from '@/components/ui/MotionItem';
 interface NavbarProps {
 
 };
@@ -14,8 +16,8 @@ const container = {
     opacity: 1,
     scale: 1,
     transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.3
+      delayChildren: 0.1,
+      staggerChildren: 0.1
     }
   }
 };
@@ -23,7 +25,7 @@ const item = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
-    opacity: 1
+    opacity: 1,
   }
 };
 const Navbar: FC<NavbarProps> = ({ }) => {
@@ -32,12 +34,13 @@ const Navbar: FC<NavbarProps> = ({ }) => {
   return (
     <div className='flex items-center justify-between py-8 px-12 '>
       <Image src={logo.logo} alt={logo.logo_text} width={logo.logo_width} height={logo.logo_height} priority />
-      <motion.ul className='lg:flex gap-8 items-center justify-center xs:hidden'
-        variants={container} initial='hidden' animate='visible'
+      <MotionContainer tag='ul' container={container} className='lg:flex gap-8 items-center justify-center xs:hidden'
+        // variants={container} initial='hidden' animate='visible'
       >
         {
           headerLinks.map((link, index) => <React.Fragment key={`${index} ${link}`}>
-            {link.hasChildren ? (<motion.li className=' group relative item ' variants={item} >
+            {link.hasChildren ? (
+            <MotionItem tag='li' className=' group relative item ' item={item} >
               <span className={`inline-flex gap-4 items-center hover:text-[#fe6019] `}>
                 {link.name}
                 <svg className="h-4 w-4" viewBox="0 0 20 20">
@@ -52,13 +55,14 @@ const Navbar: FC<NavbarProps> = ({ }) => {
                   </li>)
                 }
               </ul>
-            </motion.li>) : (<motion.li className={` hover:text-[#fe6019] item text-base `} variants={item}>
+            </MotionItem>) : (
+            <MotionItem className={` hover:text-[#fe6019] item text-base `} tag='li' item={item}>
               <Link className={`active:text-[#fe6019]`} href={link.url}>   {link.name}</Link>
 
-            </motion.li>)}
+            </MotionItem >)}
           </React.Fragment>)
         }
-      </motion.ul>
+      </MotionContainer>
 
       <Button variant='default' size='lg' className='xs:hidden lg:inline-block'>
         Download Now

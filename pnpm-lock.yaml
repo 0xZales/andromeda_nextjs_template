@@ -12,9 +12,11 @@ specifiers:
   cva: npm:class-variance-authority@^0.5.1
   eslint: 8.38.0
   eslint-config-next: 13.3.0
+  feather-icons-react: ^0.6.2
   framer-motion: ^10.11.2
   gray-matter: ^4.0.3
   html-react-parser: ^3.0.15
+  lucide: ^0.144.0
   lucide-react: ^0.137.0
   next: 13.3.0
   postcss: 8.4.21
@@ -37,9 +39,11 @@ dependencies:
   cva: /class-variance-authority/0.5.1_typescript@5.0.4
   eslint: 8.38.0
   eslint-config-next: 13.3.0_voubu7prgxjfsfbgx5d4sqnwiy
+  feather-icons-react: 0.6.2_react@18.2.0
   framer-motion: 10.11.2_biqbaboplfbrettd7655fr4n2y
   gray-matter: 4.0.3
   html-react-parser: 3.0.15_react@18.2.0
+  lucide: 0.144.0
   lucide-react: 0.137.0_react@18.2.0
   next: 13.3.0_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.21
@@ -1275,6 +1279,14 @@ packages:
       reusify: 1.0.4
     dev: false
 
+  /feather-icons-react/0.6.2_react@18.2.0:
+    resolution: {integrity: sha512-G677Y5nc3HzP1f5NNb5LJuZwKrI58BK4+/9O8Bl4naF9JixC+YL4trVom1F2ajnilq/EbU8JETPTNqvCzwH1qA==}
+    peerDependencies:
+      react: '>= 16.8.4'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /file-entry-cache/6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -1932,6 +1944,10 @@ packages:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /lucide/0.144.0:
+    resolution: {integrity: sha512-NKFURFn9fJnEIyzKszQjfY61Bf8OFgoaX4VmLbyfCfl0TDlwnR/9Z8l7h9nqOugMQDps0qFXMbmIzwXZJKA9/Q==}
     dev: false
 
   /merge2/1.4.1:

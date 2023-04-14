@@ -4,68 +4,55 @@ import { parseHtml } from '@lib/utils'
 import { fetchData } from '@lib/utils';
 import Cercle from '@/components/ui/Cercle';
 import Image from 'next/image';
-import Swipper from '@/components/ui/Swipper';
-import { motion } from "framer-motion";
+import BrandSwiper from '@/components/ui/BrandSwiper';
 import React from 'react';
 import MotionContainer from '@/components/ui/MotionContainer';
 import MotionItem from '@/components/ui/MotionItem';
+import TextSwiper from '@/components/ui/textSwiper';
+import TestimonialSwiper from '@/components/ui/TestimonialSwiper';
+import CTA from '@/components/ui/CTA';
+import Banner from '@/components/ui/Banner';
+
 const Home = async ({ }) => {
 
-  // const request = await fetchData("_index.md")
-  const request = {
-    banner: {
-      "title": "Andromeda is the most intuitive </br> way to prototype Designs",
-      "image": "/images/banner-app.png",
-      "link": {
-        "label": "Get Premium Version",
-        "href": "#"
-      }
-    }, brands: [
-      "/images/brands/01-colored.png",
-      "/images/brands/02-colored.png",
-      "/images/brands/03-colored.png",
-      "/images/brands/04-colored.png",
-      "/images/brands/05-colored.png",
-      "/images/brands/06-colored.png",
-      "/images/brands/04-colored.png",
-      "/images/brands/05-colored.png",
-      "/images/brands/06-colored.png"
-    ]
-  }
-  const { banner, brands, } = request
-  // const { banner, brands, features, intro } = request
+  const request = await fetchData("_index.md")
+
+  const { banner, brands, features, intro, speciality, testimonial } = request
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        delayChildren: 0.5,
-        staggerChildren: 1
+        delayChildren: 2,
+        staggerChildren: 5,
+        duration: 0.1
       }
     }
   };
   const item = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1
+      opacity: 1,
+      transition: {
+        duration: 0.1
+      }
     }
   };
   return (
-    <div className='w-full block  '
+    <main className='w-full flex flex-col gap-5  relative'
     >
-
-      <div className={`  container relative bg-theme flex flex-col   bg-[url('../../public/images/vectors/single-banner-wave-1.svg')] items-center justify-center p-10 `}
+      <Banner
       >
         <MotionContainer tag='div' container={container} className='z-10'>
-
-          <Paragraph size='title'>
-            {parseHtml(banner.title)} dd
-          </Paragraph>
+          <MotionItem item={item} tag='div'>
+            <Paragraph size='title'>
+              {parseHtml(banner.title)} dd
+            </Paragraph>
+          </MotionItem>
         </MotionContainer>
-
-        <MotionContainer tag='div' 
+        <MotionContainer tag='div'
           container={container} className='flex items-center justify-center mt-10'
         >
           <MotionItem item={item} tag='div'>
@@ -74,28 +61,120 @@ const Home = async ({ }) => {
             </Button>
           </MotionItem>
         </MotionContainer>
-        <Cercle fill width={50} height={50} className='left-24 top-64' />
-        <Cercle fill={false} width={45} height={45} className='right-[20%] top-32' />
-        <Cercle width={36} height={36} className='top-[40%] left-48' />
-        <Cercle width={80} height={80} className='right-10 bottom-40' />
-        <Cercle fill width={80} height={80} className='right-10 lg:top-40 xs:top-2' />
-        <Cercle width={100} height={100} className='lg:right-[30%] left-10 top-3 lg:top-64' />
-        <Cercle width={70} height={70} className='right-[50%] top-2/3' />
-        <Cercle width={55} height={55} className='left-[10%]' />
-        <Cercle fill width={90} height={90} className='right-[51%] lg:block hidden' />
-        <Cercle fill width={60} height={60} className='right-[10%] top-1/2' />
-        <MotionContainer tag='div' container={container}  className='flex items-center justify-center mt-10 z-10'>
+        <MotionContainer tag='div' container={container} className='flex items-center justify-center mt-10 z-10'>
           <MotionItem item={item} tag='div'>
             <Image src={banner.image} alt='banner image' width={1170}
               height={666}
-              priority={true} className='mt-10 z-10' />
+              priority={true} className='mt-10 z-10 ' />
           </MotionItem>
         </MotionContainer>
+      </Banner>
+      <BrandSwiper brands={brands} />
+      <div className='lg:p-24 mt-10 '>
+        <MotionItem tag='div'
+          className=' lg:w-1/2  m-auto'
+          whileInView={{ y: [30, 0], opacity: [0, 1] }}
+          transition={{ duration: 0.4 }}>
+          <Paragraph size='md' className='font-normal  text-paragraph '>
+            {features.sub_title}
+          </Paragraph>
+          <Paragraph size='lg' className=''>
+            {parseHtml(features.title)}
+          </Paragraph>
+          <div className='w-1/6 bg-primary h-1 m-auto rounded-md my-3' />
+          <Paragraph className='  px-10'>
+            {parseHtml(features.description)}
+          </Paragraph>
+        </MotionItem>
       </div>
-      <Swipper brands={brands} />
-      <section>
-      </section>
-    </div>
+      <div className='py-4 '>
+        <TextSwiper list={features.list} />
+      </div>
+      <Banner
+      >
+        <MotionContainer tag='div' container={container} className='z-10  lg:w-2/4 w-full'>
+          <MotionItem item={item} tag='div' >
+            <Paragraph className='uppercase'>
+              {parseHtml(intro.subtitle)}
+            </Paragraph>
+            <Paragraph size='lg'>
+              {parseHtml(intro.title)}
+            </Paragraph>
+            <div className='w-1/6 bg-primary h-1 m-auto rounded-md my-3' />
+            <Paragraph >
+              {parseHtml(intro.description)}
+            </Paragraph>
+            <div className=' bg-red-500 mx-auto rounded-xl object-contain relative cursor-pointer'>
+              <div className='left-1/2 top-1/2 h-16 w-16 lg:h-20 lg:w-20 rounded-full bg-primary animate-pulse absolute inline-flex items-center justify-center -translate-x-[50%] -translate-y-[50%]'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <Image src={intro.thumbnail} height={1000} width={800} alt='' className='rounded-xl object-contain' />
+            </div>
+          </MotionItem>
+        </MotionContainer>
+      </Banner>
+      <MotionItem tag='div' whileInView={{ y: [30, 0], opacity: [0, 1] }}
+        transition={{ duration: 0.4 }} className='flex lg:flex-row flex-col lg:p-20 items-center justify-center gap-20'>
+        <div className=''>
+          <Image src={speciality.primary.image} alt='' width={575} height={511} />
+        </div>
+        <div className=' px-10 lg:w-4/12 '>
+          <Paragraph className='uppercase  text-left ' >
+            {speciality.primary.subtitle}
+          </Paragraph>
+          <Paragraph size='lg' className='text-left ' >
+            {speciality.primary.title}
+          </Paragraph>
+          <div className='w-1/6 bg-primary h-1  rounded-md my-3' />
+          <Paragraph className='text-left ' >
+            {speciality.primary.description}
+          </Paragraph>
+        </div>
+      </MotionItem>
+
+
+      <MotionItem tag='div' whileInView={{ y: [30, 0], opacity: [0, 1] }}
+        transition={{ duration: 0.4 }} className='flex lg:flex-row-reverse flex-col lg:p-20 items-center justify-center gap-20'>
+        <div className=''>
+          <Image src={speciality.secondary.image} alt='' width={575} height={511} />
+        </div>
+        <div className=' px-10 lg:w-4/12 '>
+          <Paragraph className='uppercase  text-left ' >
+            {speciality.secondary.subtitle}
+          </Paragraph>
+          <Paragraph size='lg' className='text-left ' >
+            {speciality.secondary.title}
+          </Paragraph>
+          <div className='w-1/6 bg-primary h-1  rounded-md my-3' />
+          <Paragraph className='text-left ' >
+            {speciality.secondary.description}
+          </Paragraph>
+        </div>
+      </MotionItem>
+      <MotionContainer tag='section' className='' >
+        <MotionItem tag='div' className='container ' whileInView={{ y: [30, 0], opacity: [0, 1] }}
+          transition={{ duration: 0.4 }} >
+          <Paragraph >
+            {testimonial.subtitle}
+          </Paragraph>
+          <Paragraph size='lg'>
+            {testimonial.title}
+          </Paragraph>
+          <div className='w-1/12 bg-primary h-1 m-auto rounded-md my-3' />
+          <Paragraph >
+            {parseHtml(testimonial.description)}
+          </Paragraph>
+        </MotionItem>
+        <MotionItem tag='div' className='w-full  mx-auto flex ' whileInView={{ y: [30, 0], opacity: [0, 1] }}
+          transition={{ duration: 0.4 }}>
+          <Image className='p-24  w-2/6' src='/images/testimonials-01.png' alt='' width={455} height={527} />
+          <TestimonialSwiper list={features.list} listd={testimonial.list} />
+          <Image className='p-24  w-2/6' src='/images/testimonials-01.png' alt='' width={455} height={527} />
+        </MotionItem>
+      </MotionContainer>
+
+      <CTA />
+    </main>
   );
 };
 

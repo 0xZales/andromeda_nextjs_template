@@ -1,9 +1,9 @@
 'use client'
 import { FC, ReactNode, HTMLAttributes, forwardRef } from 'react';
-import {createDomMotionComponent ,DOMMotionComponents} from "framer-motion";
+import {createDomMotionComponent ,DOMMotionComponents,MotionProps} from "framer-motion";
 type MotionTagName = keyof DOMMotionComponents;
-interface MotionContainerProps extends HTMLAttributes<HTMLElement>  {
-  container: {
+interface MotionContainerProps  extends MotionProps  {
+  container?: {
     hidden: { opacity: number, scale: number },
     visible: {
       opacity: number,
@@ -14,15 +14,17 @@ interface MotionContainerProps extends HTMLAttributes<HTMLElement>  {
       }
     }
   },
-  tag:MotionTagName 
+  tag:MotionTagName ,
+  className?:string
 }
 
-const MotionContainer: FC<MotionContainerProps> = ({ children, container,className,tag}) => {
+const MotionContainer: FC<MotionContainerProps> = ({ children, container,className,tag,...props}) => {
     const motion = {
        element: createDomMotionComponent(tag)
       }
   return (
-    <motion.element animate='visible' initial='hidden' variants={container} className={className}>
+    <motion.element    initial="hidden"
+    animate="visible" variants={container} className={className} {...props}>
       {children}
     </motion.element>
   );
