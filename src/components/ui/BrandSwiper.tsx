@@ -13,7 +13,7 @@ const BrandSwiper: FC<SwipperProps> = ({ brands }) => {
 
     <div className=' '>
       <Swiper
-    className='border '
+    className=' '
       loop={true}
       slidesPerView={3}
       breakpoints={{

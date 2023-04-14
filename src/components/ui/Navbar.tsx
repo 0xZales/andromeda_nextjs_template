@@ -3,32 +3,12 @@ import React, { FC, useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import * as headerElement from '@/components/index'
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import MotionContainer from '@/components/ui/MotionContainer';
 import MotionItem from '@/components/ui/MotionItem';
-interface NavbarProps {
+import { item,container } from '@/components';
 
-};
-const container = {
-  hidden: { opacity: 1, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delayChildren: 0.1,
-      staggerChildren: 0.1
-    }
-  }
-};
-const item = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-  }
-};
-const Navbar: FC<NavbarProps> = ({ }) => {
+const Navbar = ({ }) => {
   const [isSelected, setIsSelected] = useState<string>('home')
   const { logo, headerLinks } = headerElement
   return (

@@ -2,7 +2,6 @@ import Button from '@/components/ui/Button';
 import Paragraph from '@/components/ui/Paragraph';
 import { parseHtml } from '@lib/utils'
 import { fetchData } from '@lib/utils';
-import Cercle from '@/components/ui/Cercle';
 import Image from 'next/image';
 import BrandSwiper from '@/components/ui/BrandSwiper';
 import React from 'react';
@@ -12,34 +11,15 @@ import TextSwiper from '@/components/ui/textSwiper';
 import TestimonialSwiper from '@/components/ui/TestimonialSwiper';
 import CTA from '@/components/ui/CTA';
 import Banner from '@/components/ui/Banner';
+import { item,container } from '@/components';
 
 const Home = async ({ }) => {
 
   const request = await fetchData("_index.md")
 
   const { banner, brands, features, intro, speciality, testimonial } = request
-  const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 2,
-        staggerChildren: 5,
-        duration: 0.1
-      }
-    }
-  };
-  const item = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.1
-      }
-    }
-  };
+
+ 
   return (
     <main className='w-full flex flex-col gap-5  relative'
     >
@@ -48,17 +28,19 @@ const Home = async ({ }) => {
         <MotionContainer tag='div' container={container} className='z-10'>
           <MotionItem item={item} tag='div'>
             <Paragraph size='title'>
-              {parseHtml(banner.title)} dd
+              {parseHtml(banner.title)} 
             </Paragraph>
           </MotionItem>
         </MotionContainer>
         <MotionContainer tag='div'
-          container={container} className='flex items-center justify-center mt-10'
+          container={container} className=' z-10 flex items-center justify-center mt-10 '
         >
-          <MotionItem item={item} tag='div'>
-            <Button size='lg' className='z-10' >
-              {banner.link.label}
-            </Button>
+          <MotionItem item={item} tag='div' className=' '>
+          
+
+      <Button variant='default' size='lg' className=''>
+      {banner.link.label}
+      </Button>
           </MotionItem>
         </MotionContainer>
         <MotionContainer tag='div' container={container} className='flex items-center justify-center mt-10 z-10'>
@@ -92,7 +74,7 @@ const Home = async ({ }) => {
       </div>
       <Banner
       >
-        <MotionContainer tag='div' container={container} className='z-10  lg:w-2/4 w-full'>
+        <MotionContainer tag='div' container={container} className='z-10  lg:w-2/4 w-full '>
           <MotionItem item={item} tag='div' >
             <Paragraph className='uppercase'>
               {parseHtml(intro.subtitle)}
@@ -101,14 +83,14 @@ const Home = async ({ }) => {
               {parseHtml(intro.title)}
             </Paragraph>
             <div className='w-1/6 bg-primary h-1 m-auto rounded-md my-3' />
-            <Paragraph >
+            <Paragraph className='p-10'>
               {parseHtml(intro.description)}
             </Paragraph>
-            <div className=' bg-red-500 mx-auto rounded-xl object-contain relative cursor-pointer'>
-              <div className='left-1/2 top-1/2 h-16 w-16 lg:h-20 lg:w-20 rounded-full bg-primary animate-pulse absolute inline-flex items-center justify-center -translate-x-[50%] -translate-y-[50%]'>
+            <div className='  mx-auto rounded-xl relative cursor-pointer p-6'>
+              <div className='left-1/2 top-1/2 h-16 w-16 lg:h-20 lg:w-20 rounded-full bg-primary animate-pulse absolute inline-flex items-center justify-center -translate-x-[50%] -translate-y-[50%] cursor-pointer'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
               </div>
-              <Image src={intro.thumbnail} height={1000} width={800} alt='' className='rounded-xl object-contain' />
+              <Image src={intro.thumbnail} height={1000} width={800} alt='' className='rounded-xl object-contain ' />
             </div>
           </MotionItem>
         </MotionContainer>
@@ -165,11 +147,11 @@ const Home = async ({ }) => {
             {parseHtml(testimonial.description)}
           </Paragraph>
         </MotionItem>
-        <MotionItem tag='div' className='w-full  mx-auto flex ' whileInView={{ y: [30, 0], opacity: [0, 1] }}
+        <MotionItem tag='div' className='w-full  mx-auto flex items-center justify-center' whileInView={{ y: [30, 0], opacity: [0, 1] }}
           transition={{ duration: 0.4 }}>
-          <Image className='p-24  w-2/6' src='/images/testimonials-01.png' alt='' width={455} height={527} />
+          <Image className='p-24  w-2/6 hidden lg:block' src='/images/testimonials-01.png' alt='' width={455} height={527} />
           <TestimonialSwiper list={features.list} listd={testimonial.list} />
-          <Image className='p-24  w-2/6' src='/images/testimonials-01.png' alt='' width={455} height={527} />
+          <Image className='p-24  w-2/6 hidden lg:block' src='/images/testimonials-01.png' alt='' width={455} height={527} />
         </MotionItem>
       </MotionContainer>
 

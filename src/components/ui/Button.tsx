@@ -4,7 +4,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 
 
 export const Variants = cva(
-    'active:scale-95 inline-flex items-center justify-center transition rounded-md text-sm font-medium transition-colors  focus:ring-20 ',
+    'active:scale-95 flex items-center justify-center transition rounded-md text-sm font-medium transition-colors  focus:ring-20 ',
     {
         variants: {
             variant: {
@@ -15,7 +15,7 @@ export const Variants = cva(
             size: {
                 default: 'h-10 py-2 px-4',
                 sm: 'h-9 px-2 rounded-md',
-                lg: 'h-14 px-8 rounded-md',
+                lg: 'h-16 px-8 rounded-md max-w-xs',
             },
         },
         defaultVariants: {

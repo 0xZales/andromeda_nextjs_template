@@ -7,7 +7,6 @@ import Paragraph from './Paragraph';
 import { Quote } from 'lucide-react'
 import Image from 'next/image';
 import 'swiper/swiper.min.css'
-import { Wind, Shield } from 'lucide-react'
 interface testimonialSwiperProps {
   listd: { author: string, avatar: string, profession: string, content: string }[],
   list: { icon: string, title: string, content: string }[]
@@ -15,7 +14,7 @@ interface testimonialSwiperProps {
 };
 const TestimonialSwiper: FC<testimonialSwiperProps> = ({ list, className, listd }) => {
   return (
-    <div className='relative  w-2/6'>
+    <div className='relative  lg:w-2/6 w-full'>
       <Swiper
         loop={true}
         breakpoints={{
@@ -35,8 +34,8 @@ const TestimonialSwiper: FC<testimonialSwiperProps> = ({ list, className, listd 
       >
         {listd.map((item, index) => (
           <SwiperSlide key={"feature-" + index} className=' p-10'>
-            <div className="feature-card m-4 rounded-md border border-transparent px-7 shadow-[0px_4px_25px_rgba(0,0,0,.05)] transition-all duration-300  hover:border-[#ffece4] hover:shadow-none flex justify-center flex-col text-white  py-24 relative items-center cursor-pointer">
-              <div className='bg-primary rounded-tl-[20px] rounded-tr-[35px] rounded-bl-[48px] rounded-br-[24px] lg:w-3/4'>
+            <div className="feature-card m-4 rounded-md border border-transparent px-7 shadow-[0px_4px_25px_rgba(0,0,0,.05)] transition-all duration-300 hover:shadow-none flex justify-center flex-col text-white  py-24 relative items-center cursor-pointer">
+              <div className='bg-primary rounded-tl-[20px] rounded-tr-[35px] rounded-bl-[48px] rounded-br-[24px] lg:w-3/4 '>
                 <div className=" flex h-20 w-20 items-center justify-center rounded-md  m-auto ">
                   <Quote size={48} />
                 </div >
