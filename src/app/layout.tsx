@@ -6,9 +6,10 @@ import { Poppins } from 'next/font/google';
 const poppins = Poppins({ weight: ['400', '600', '700', '900'], subsets: ['latin'], variable: '--font-poppins' })
 export const metadata = {
   title: 'Create Next App',
-  description: 'Andromeda NExtjs Template',
+  description: 'Andromeda Nextjs Template',
   
 }
+
 
 export default function RootLayout({
   children,

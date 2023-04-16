@@ -1,29 +1,27 @@
-import Button from '@/components/ui/Button';
 import Paragraph from '@/components/ui/Paragraph';
 import { parseHtml } from '@lib/utils'
-import { fetchData } from '@lib/utils';
 import Cercle from '@/components/ui/Cercle';
 import Image from 'next/image';
+import type { Metadata } from "next";
 import BrandSwiper from '@/components/ui/BrandSwiper';
 import MotionContainer from '@/components/ui/MotionContainer';
 import MotionItem from '@/components/ui/MotionItem';
-import TextSwiper from '@/components/ui/textSwiper';
-import TestimonialSwiper from '@/components/ui/TestimonialSwiper';
 import CTA from '@/components/ui/CTA';
 import Banner from '@/components/ui/Banner';
-import { FC } from 'react';
 import Link from 'next/link';
 import { item, container } from '@/components';
-interface pageProps {
-};
-
+import { getPageData } from '@/lib/post';
+export const metadata : Metadata = {
+  title :  'Andromeda Nextjs Template | About ', 
+  description: 'Andromeda Nextjs'
+}
 const page = async ({ }) => {
-  const request = await fetchData("about.md")
-  const brandRequest = await fetchData("_index.md")
+  const data:any = await getPageData('about.md')
+  const brandRequest:any  = await getPageData('_index.md')
   const { brands } = brandRequest
-  const { title, layout, about_us, works, mission, video, clients, our_member, our_office, } = request
+  const { title, layout, about_us, works, mission, video, clients, our_member, our_office, } = data
   return (
-    <main>
+    <div>
       <Banner>
         <div className="container  z-10 lg:p-24 p-32">
           <Paragraph size='title' >
@@ -48,7 +46,7 @@ const page = async ({ }) => {
             <Paragraph size='lg' className='lg:w-1/2 text-left'>
               {about_us.title}
             </Paragraph>
-            <div className='w-1/6 bg-primary h-1  rounded-md my-3' />
+            <div className='lg:w-1/6 w-2/12 bg-primary h-1  rounded-md my-3' />
             <Paragraph className='text-left'>
               {about_us.content}
             </Paragraph>
@@ -79,7 +77,7 @@ const page = async ({ }) => {
           <Paragraph >
             {works.title}
           </Paragraph>
-          <div className='w-1/12 bg-primary h-1  rounded-md my-1' />
+          <div className='lg:w-1/12 w-3/12 bg-primary h-1  rounded-md my-1' />
         </MotionItem>
         <MotionItem tag='div' item={container} className='flex flex-col lg:flex-row lg:gap-0 gap-5 w-full items-center flex-wrap justify-center  lg:p-24'>
           {
@@ -111,7 +109,7 @@ const page = async ({ }) => {
             <Paragraph size='lg' className='lg:w-1/2 text-left'>
               {mission.title}
             </Paragraph>
-            <div className='w-1/6 bg-primary h-1  rounded-md my-3' />
+            <div className='lg:w-1/6 w-2/6 bg-primary h-1  rounded-md my-3' />
             <Paragraph className='text-left'>
               {mission.content}
             </Paragraph>
@@ -137,7 +135,7 @@ const page = async ({ }) => {
             <Paragraph size='lg' className='text-left'>
               {video.title}
             </Paragraph>
-            <div className='w-1/6 bg-primary h-1  rounded-md my-3' />
+            <div className='lg:w-1/6 w-2/6 bg-primary h-1  rounded-md my-3' />
             <Paragraph className='text-left'>
               {video.description}
             </Paragraph>
@@ -158,7 +156,7 @@ const page = async ({ }) => {
         <Paragraph size='lg'>
           {clients.title}
         </Paragraph>
-        <div className='w-1/12 bg-primary h-1  rounded-md m-auto' />
+        <div className='lg:w-1/12 w-3/12 bg-primary h-1  rounded-md m-auto' />
         <BrandSwiper brands={brands} />
       </section>
       <section className=''>
@@ -172,7 +170,7 @@ const page = async ({ }) => {
         <Paragraph >
           {parseHtml(our_member.content)}
         </Paragraph>
-        <div className='w-1/12 bg-primary h-1  rounded-md m-auto' />
+        <div className='lg:w-1/12 w-3/12 bg-primary h-1  rounded-md m-auto' />
   </div>
         <div className='flex flex-col lg:flex-row items-center justify-center gap-20 p-12'>
           {
@@ -200,7 +198,7 @@ const page = async ({ }) => {
         <Paragraph >
           {parseHtml(our_office.content)}
         </Paragraph>
-        <div className='w-1/12 bg-primary h-1  rounded-md m-auto' />
+        <div className='lg:w-1/12 w-3/12 bg-primary h-1  rounded-md m-auto' />
         <div className='flex flex-col lg:flex-row  items-center justify-center gap-4 m-auto'>
               {
                 our_office.countries.map((country:{flag:string,name:string,location:string})=><div className='drop-shadow-lg max-w-xs p-3 rounded-lg' key={country.name}>
@@ -217,7 +215,7 @@ const page = async ({ }) => {
   </div>
       </section>
       <CTA/>
-    </main>
+    </div>
   );
 };
 

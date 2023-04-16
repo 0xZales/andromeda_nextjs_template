@@ -22,7 +22,7 @@ const CTA: FC<CTAProps> = ({ }) => {
                     <Paragraph size='lg'>
                         {cta.title}
                     </Paragraph>
-                    <div className='w-1/12 bg-primary h-1 m-auto rounded-md my-3' />
+                    <div className='lg:w-1/12 w-3/12 bg-primary h-1 m-auto rounded-md my-3' />
                     <Paragraph >
                         {parseHtml(cta.content)}
                     </Paragraph>

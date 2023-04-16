@@ -1,10 +1,10 @@
 import Button from '@/components/ui/Button';
 import Paragraph from '@/components/ui/Paragraph';
 import { parseHtml } from '@lib/utils'
-import { fetchData } from '@lib/utils';
 import Image from 'next/image';
 import BrandSwiper from '@/components/ui/BrandSwiper';
 import React from 'react';
+import { getPageData } from '@/lib/post';
 import MotionContainer from '@/components/ui/MotionContainer';
 import MotionItem from '@/components/ui/MotionItem';
 import TextSwiper from '@/components/ui/textSwiper';
@@ -12,14 +12,14 @@ import TestimonialSwiper from '@/components/ui/TestimonialSwiper';
 import CTA from '@/components/ui/CTA';
 import Banner from '@/components/ui/Banner';
 import { item,container } from '@/components';
-
+import type { Metadata } from "next";
+export const metadata : Metadata = {
+  title :  'Andromeda Nextjs Template | Home ', 
+  description: 'Andromeda Nextjs'
+}
 const Home = async ({ }) => {
-
-  const request = await fetchData("_index.md")
-
-  const { banner, brands, features, intro, speciality, testimonial } = request
-
- 
+  const data:any = await getPageData('_index.md')
+  const { banner, brands, features, intro, speciality, testimonial } = data
   return (
     <main className='w-full flex flex-col gap-5  relative'
     >

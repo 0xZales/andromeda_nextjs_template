@@ -36,8 +36,8 @@ const Navbar = ({ }) => {
                 }
               </ul>
             </MotionItem>) : (
-            <MotionItem className={` hover:text-[#fe6019] item text-base `} tag='li' item={item}>
-              <Link className={`active:text-[#fe6019]`} href={link.url}>   {link.name}</Link>
+            <MotionItem className={` hover:text-primary item text-base `} tag='li' item={item}>
+              <Link className={`active:text-primary hover:text-primary`} href={link.url}>   {link.name}</Link>
 
             </MotionItem >)}
           </React.Fragment>)
