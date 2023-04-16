@@ -31,7 +31,7 @@ const page = async ({ }) => {
                     </div>
                 </div>
             </Banner>
-            <MotionContainer tag='section' className='flex flex-col lg:flex-row w-full'>
+            <MotionContainer tag='div' className='flex flex-col lg:flex-row w-full'>
                     <div className='lg:w-1/2  relative p-8 lg:p-0' >
                     <Image src={contact} alt='Contact vector' />
                     </div>

@@ -1,24 +1,19 @@
-import { FC } from 'react';
 import Button from '@/components/ui/Button';
 import Paragraph from '@/components/ui/Paragraph';
 import { parseHtml } from '@lib/utils'
-import Cercle from '@/components/ui/Cercle';
 import React from 'react';
 import MotionContainer from '@/components/ui/MotionContainer';
-import MotionItem from '@/components/ui/MotionItem';
 import { cta } from '..';
 import { item,container } from '@/components';
 import Banner from '@/components/ui/Banner';
-interface CTAProps {
 
-};
 
-const CTA: FC<CTAProps> = ({ }) => {
+const CTA= ({ }) => {
 
     return (
         <Banner>
-            <MotionContainer tag='div' container={container} className='z-10  lg:w-2/4 w-full p-10'>
-                <MotionItem item={item} tag='div'className='flex flex-col gap-2' >
+            <MotionContainer tag='div' variant={container} className='z-10  lg:w-2/4 w-full p-10'>
+                <MotionContainer variant={item} tag='div'className='flex flex-col gap-2' >
                     <Paragraph size='lg'>
                         {cta.title}
                     </Paragraph>
@@ -32,7 +27,7 @@ const CTA: FC<CTAProps> = ({ }) => {
                         </Button>
                     </div>
 
-                </MotionItem>
+                </MotionContainer>
 
             </MotionContainer>
             </Banner>

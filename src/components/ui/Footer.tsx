@@ -14,7 +14,7 @@ interface FooterProps {
 const Footer: FC<FooterProps> = ({ }) => {
     return (
         <footer className='w-full  '>
-            <MotionContainer tag='div' className='w-full flex flex-col lg:flex-row border-2 border-r-0 border-l-0 border-b-2 lg:p-20 p-8' container={container}>
+            <MotionContainer tag='div' className='w-full flex flex-col lg:flex-row border-2 border-r-0 border-l-0 border-b-2 lg:p-20 p-8' variant={container}>
                 <div className='lg:w-1/4'>
                     <Image src={logo.logo} alt={logo.logo_text} width={logo.logo_width} height={logo.logo_height} priority />
                     <Paragraph className='text-left mt-2 text-sm '>

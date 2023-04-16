@@ -5,12 +5,11 @@ import html from "remark-html";
 import matter from "gray-matter";
 const pageContentDirectory = path.join(process.cwd(), "src/content");
 const postsDirectory = path.join(process.cwd(), "src/content/posts");
-export const getPageData = async (filename: string) => {
+export const getPageData = (filename: string) => {
   const fullPath = path.join(pageContentDirectory, filename);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const matterResult = matter(fileContents);
 
-  const res = typeof matterResult.data;
   return { filename, ...matterResult.data };
 };
 
@@ -23,7 +22,6 @@ export async function getAllPostData() {
       const res = await getPostData(id);
 
       return {
-        id,
         ...res,
       };
     })
@@ -39,7 +37,9 @@ export async function getAllPostData() {
 }
 
 export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
+
+   const fullPath = path.join(postsDirectory, `${id}.md`);
+
   const fileContents = fs.readFileSync(fullPath, "utf8");
 
   // Use gray-matter to parse the post metadata section

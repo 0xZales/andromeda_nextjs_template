@@ -1,5 +1,4 @@
 import { FC, ReactNode } from 'react';
-import MotionContainer from '@/components/ui/MotionContainer';
 import Cercle from '@/components/ui/Cercle';
 interface BannerProps {
   children: ReactNode

@@ -5,19 +5,18 @@ import Image from 'next/image';
 import type { Metadata } from "next";
 import BrandSwiper from '@/components/ui/BrandSwiper';
 import MotionContainer from '@/components/ui/MotionContainer';
-import MotionItem from '@/components/ui/MotionItem';
 import CTA from '@/components/ui/CTA';
 import Banner from '@/components/ui/Banner';
 import Link from 'next/link';
 import { item, container } from '@/components';
 import { getPageData } from '@/lib/post';
-export const metadata : Metadata = {
-  title :  'Andromeda Nextjs Template | About ', 
+export const metadata: Metadata = {
+  title: 'Andromeda Nextjs Template | About ',
   description: 'Andromeda Nextjs'
 }
 const page = async ({ }) => {
-  const data:any = await getPageData('about.md')
-  const brandRequest:any  = await getPageData('_index.md')
+  const data: any = await getPageData('about.md')
+  const brandRequest: any = await getPageData('_index.md')
   const { brands } = brandRequest
   const { title, layout, about_us, works, mission, video, clients, our_member, our_office, } = data
   return (
@@ -37,9 +36,9 @@ const page = async ({ }) => {
           </div>
         </div>
       </Banner>
-      <MotionContainer tag='section' className='container py-10 relative overflow-hidden' container={container}>
-        <MotionItem tag='div' className='flex flex-col-reverse lg:flex-row gap-4 w-full lg:p-56 '>
-          <div className='lg:w-2/4 lg:px-10 p-0 w-full z-50 '>
+      <MotionContainer tag='div' className='container py-10 relative overflow-hidden' variant={container}>
+        <MotionContainer tag='div' className='flex flex-col-reverse lg:flex-row gap-4 w-full lg:p-56 '>
+          <div className='lg:w-2/4 lg:px-10 p-0 w-full z-10 '>
             <Paragraph className='text-left'>
               {about_us.subtitle}
             </Paragraph>
@@ -51,10 +50,10 @@ const page = async ({ }) => {
               {about_us.content}
             </Paragraph>
           </div>
-          <div className='lg:w-2/4 lg:p-0 p-10 z-50'>
+          <div className='lg:w-2/4 lg:p-0 p-10 z-10'>
             <Image src={about_us.image} width={400} height={800} alt='' className='rounded-lg' />
           </div>
-        </MotionItem>
+        </MotionContainer>
         <Cercle fill width={50} height={50} className='left-24 top-64' />
         <Cercle fill={false} width={45} height={45} className='right-[20%] top-32' />
         <Cercle width={36} height={36} className='top-[40%] left-48' />
@@ -66,8 +65,8 @@ const page = async ({ }) => {
         <Cercle fill width={90} height={90} className='right-[51%] lg:block hidden' />
         <Cercle fill width={60} height={60} className='right-[10%] top-1/2' />
       </MotionContainer>
-      <MotionContainer tag='section' className='container  relative overflow-hidden' container={container}>
-        <MotionItem tag='div' className='flex flex-col w-full items-center justify-center pt-8' item={item}>
+      <MotionContainer tag='div' className='container  relative overflow-hidden' variant={container}>
+        <MotionContainer tag='div' className='flex flex-col w-full items-center justify-center pt-8' variant={item}>
           <Paragraph >
             {works.subtitle}
           </Paragraph>
@@ -78,31 +77,31 @@ const page = async ({ }) => {
             {works.title}
           </Paragraph>
           <div className='lg:w-1/12 w-3/12 bg-primary h-1  rounded-md my-1' />
-        </MotionItem>
-        <MotionItem tag='div' item={container} className='flex flex-col lg:flex-row lg:gap-0 gap-5 w-full items-center flex-wrap justify-center  lg:p-24'>
+        </MotionContainer>
+        <MotionContainer tag='div' variant={container} className='flex flex-col lg:flex-row lg:gap-0 gap-5 w-full items-center flex-wrap justify-center  lg:p-24'>
           {
-            works.list.map((item: { title: string, content: string }) => <MotionItem item={item} tag='div' className=' lg:w-1/2' key={item.title}>
+            works.list.map((item: { title: string, content: string }) => <MotionContainer variant={item} tag='div' className=' lg:w-1/2' key={item.title}>
               <Paragraph size='lg'>
                 {item.title}
               </Paragraph>
               <Paragraph>
                 {item.content}
               </Paragraph>
-            </MotionItem>)
+            </MotionContainer>)
           }
-        </MotionItem >
+        </MotionContainer >
 
       </MotionContainer>
 
 
 
-      <MotionContainer tag='section' className='w-full  relative overflow-hidden mb-5' container={container}>
-        <MotionItem tag='div' className='flex flex-col lg:flex-row lg:w-3/4 gap-5 m-auto  items-center justify-center'>
+      <MotionContainer tag='div' className='w-full  relative overflow-hidden mb-5' variant={container}>
+        <MotionContainer tag='div' className='flex flex-col lg:flex-row lg:w-3/4 gap-5 m-auto  items-center justify-center'>
 
-          <div className='lg:p-0 p-10 z-50'>
+          <div className='lg:p-0 p-10 z-10'>
             <Image src={mission.image} width={400} height={800} alt='' className='rounded-lg ' />
           </div>
-          <div className='lg:w-2/4  p-8 lg:p-0 w-full z-50 '>
+          <div className='lg:w-2/4  p-8 lg:p-0 w-full z-10 '>
             <Paragraph className='text-left'>
               {mission.subtitle}
             </Paragraph>
@@ -114,7 +113,7 @@ const page = async ({ }) => {
               {mission.content}
             </Paragraph>
           </div>
-        </MotionItem>
+        </MotionContainer>
         <Cercle fill width={50} height={50} className='left-24 top-64' />
         <Cercle fill={false} width={45} height={45} className='right-[20%] top-32' />
         <Cercle width={36} height={36} className='top-[40%] left-48' />
@@ -160,21 +159,21 @@ const page = async ({ }) => {
         <BrandSwiper brands={brands} />
       </section>
       <section className=''>
-  <div className='flex flex-col gap-5'>
-  <Paragraph>
-          {our_member.subtitle}
-        </Paragraph>
-        <Paragraph size='lg'>
-          {our_member.title}
-        </Paragraph>
-        <Paragraph >
-          {parseHtml(our_member.content)}
-        </Paragraph>
-        <div className='lg:w-1/12 w-3/12 bg-primary h-1  rounded-md m-auto' />
-  </div>
+        <div className='flex flex-col gap-5'>
+          <Paragraph>
+            {our_member.subtitle}
+          </Paragraph>
+          <Paragraph size='lg'>
+            {our_member.title}
+          </Paragraph>
+          <Paragraph >
+            {parseHtml(our_member.content)}
+          </Paragraph>
+          <div className='lg:w-1/12 w-3/12 bg-primary h-1  rounded-md m-auto' />
+        </div>
         <div className='flex flex-col lg:flex-row items-center justify-center gap-20 p-12'>
           {
-            our_member.list.map((member: {name:string,field:string,image:string}) => <div key={member.name}>
+            our_member.list.map((member: { name: string, field: string, image: string }) => <div key={member.name}>
 
               <Image src={member.image} width={250} height={250} alt='' className='rounded-full ' />
               <Paragraph size='md' className='mt-4'>
@@ -188,33 +187,33 @@ const page = async ({ }) => {
         </div>
       </section>
       <section>
-      <div className='flex flex-col gap-5'>
-  <Paragraph>
-          {our_office.subtitle}
-        </Paragraph>
-        <Paragraph size='lg'>
-          {parseHtml(our_office.title)}
-        </Paragraph>
-        <Paragraph >
-          {parseHtml(our_office.content)}
-        </Paragraph>
-        <div className='lg:w-1/12 w-3/12 bg-primary h-1  rounded-md m-auto' />
-        <div className='flex flex-col lg:flex-row  items-center justify-center gap-4 m-auto'>
-              {
-                our_office.countries.map((country:{flag:string,name:string,location:string})=><div className='drop-shadow-lg max-w-xs p-3 rounded-lg' key={country.name}>
-                   <Image src={country.flag} width={80} height={80} alt='' className='rounded-md ' />
-                   <Paragraph size='md' className='text-left'>
-                    {country.name}
-                   </Paragraph>
-                   <Paragraph className='text-left'>
-                    {country.location}
-                   </Paragraph>
-                </div>)
-              }
+        <div className='flex flex-col gap-5'>
+          <Paragraph>
+            {our_office.subtitle}
+          </Paragraph>
+          <Paragraph size='lg'>
+            {parseHtml(our_office.title)}
+          </Paragraph>
+          <Paragraph >
+            {parseHtml(our_office.content)}
+          </Paragraph>
+          <div className='lg:w-1/12 w-3/12 bg-primary h-1  rounded-md m-auto' />
+          <div className='flex flex-col lg:flex-row  items-center justify-center gap-4 m-auto'>
+            {
+              our_office.countries.map((country: { flag: string, name: string, location: string }) => <div className='drop-shadow-lg max-w-xs p-3 rounded-lg' key={country.name}>
+                <Image src={country.flag} width={80} height={80} alt='' className='rounded-md ' />
+                <Paragraph size='md' className='text-left'>
+                  {country.name}
+                </Paragraph>
+                <Paragraph className='text-left'>
+                  {country.location}
+                </Paragraph>
+              </div>)
+            }
+          </div>
         </div>
-  </div>
       </section>
-      <CTA/>
+      <CTA />
     </div>
   );
 };

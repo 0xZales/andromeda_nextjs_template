@@ -6,54 +6,51 @@ import BrandSwiper from '@/components/ui/BrandSwiper';
 import React from 'react';
 import { getPageData } from '@/lib/post';
 import MotionContainer from '@/components/ui/MotionContainer';
-import MotionItem from '@/components/ui/MotionItem';
 import TextSwiper from '@/components/ui/textSwiper';
 import TestimonialSwiper from '@/components/ui/TestimonialSwiper';
 import CTA from '@/components/ui/CTA';
 import Banner from '@/components/ui/Banner';
-import { item,container } from '@/components';
+import { item, container } from '@/components';
 import type { Metadata } from "next";
-export const metadata : Metadata = {
-  title :  'Andromeda Nextjs Template | Home ', 
+export const metadata: Metadata = {
+  title: 'Andromeda Nextjs Template | Home ',
   description: 'Andromeda Nextjs'
 }
 const Home = async ({ }) => {
-  const data:any = await getPageData('_index.md')
+  const data: any =  getPageData('_index.md')
   const { banner, brands, features, intro, speciality, testimonial } = data
   return (
-    <main className='w-full flex flex-col gap-5  relative'
+    <main className='w-full flex flex-col gap-5  relative z-0'
     >
       <Banner
       >
-        <MotionContainer tag='div' container={container} className='z-10'>
-          <MotionItem item={item} tag='div'>
+        <MotionContainer tag='div' variant={container} className='z-10'>
+          <MotionContainer variant={item} tag='div'>
             <Paragraph size='title'>
-              {parseHtml(banner.title)} 
+              {parseHtml(banner.title)}
             </Paragraph>
-          </MotionItem>
+          </MotionContainer>
         </MotionContainer>
         <MotionContainer tag='div'
-          container={container} className=' z-10 flex items-center justify-center mt-10 '
+          variant={container} className=' z-10 flex items-center justify-center mt-10 '
         >
-          <MotionItem item={item} tag='div' className=' '>
-          
-
-      <Button variant='default' size='lg' className=''>
-      {banner.link.label}
-      </Button>
-          </MotionItem>
+          <MotionContainer variant={item} tag='div' className=' '>
+            <Button variant='default' size='lg' className=''>
+              {banner.link.label}
+            </Button>
+          </MotionContainer>
         </MotionContainer>
-        <MotionContainer tag='div' container={container} className='flex items-center justify-center mt-10 z-10'>
-          <MotionItem item={item} tag='div'>
+        <MotionContainer tag='div' variant={container} className='flex items-center justify-center mt-10 z-10'>
+          <MotionContainer variant={item} tag='div'>
             <Image src={banner.image} alt='banner image' width={1170}
               height={666}
               priority={true} className='mt-10 z-10 ' />
-          </MotionItem>
+          </MotionContainer>
         </MotionContainer>
       </Banner>
       <BrandSwiper brands={brands} />
       <div className='lg:p-24 mt-10 '>
-        <MotionItem tag='div'
+        <MotionContainer tag='div'
           className=' lg:w-1/2  m-auto'
           whileInView={{ y: [30, 0], opacity: [0, 1] }}
           transition={{ duration: 0.4 }}>
@@ -67,15 +64,15 @@ const Home = async ({ }) => {
           <Paragraph className='  px-10'>
             {parseHtml(features.description)}
           </Paragraph>
-        </MotionItem>
+        </MotionContainer>
       </div>
       <div className='py-4 '>
         <TextSwiper list={features.list} />
       </div>
       <Banner
       >
-        <MotionContainer tag='div' container={container} className='z-10  lg:w-2/4 w-full '>
-          <MotionItem item={item} tag='div' >
+        <MotionContainer tag='div' variant={container} className='z-10  lg:w-2/4 w-full '>
+          <MotionContainer variant={item} tag='div' >
             <Paragraph className='uppercase'>
               {parseHtml(intro.subtitle)}
             </Paragraph>
@@ -92,10 +89,10 @@ const Home = async ({ }) => {
               </div>
               <Image src={intro.thumbnail} height={1000} width={800} alt='' className='rounded-xl object-contain ' />
             </div>
-          </MotionItem>
+          </MotionContainer>
         </MotionContainer>
       </Banner>
-      <MotionItem tag='div' whileInView={{ y: [30, 0], opacity: [0, 1] }}
+      <MotionContainer tag='div' whileInView={{ y: [30, 0], opacity: [0, 1] }}
         transition={{ duration: 0.4 }} className='flex lg:flex-row flex-col lg:p-20 items-center justify-center gap-20'>
         <div className=''>
           <Image src={speciality.primary.image} alt='' width={575} height={511} />
@@ -112,10 +109,10 @@ const Home = async ({ }) => {
             {speciality.primary.description}
           </Paragraph>
         </div>
-      </MotionItem>
+      </MotionContainer>
 
 
-      <MotionItem tag='div' whileInView={{ y: [30, 0], opacity: [0, 1] }}
+      <MotionContainer tag='div' whileInView={{ y: [30, 0], opacity: [0, 1] }}
         transition={{ duration: 0.4 }} className='flex lg:flex-row-reverse flex-col lg:p-20 items-center justify-center gap-20'>
         <div className=''>
           <Image src={speciality.secondary.image} alt='' width={575} height={511} />
@@ -132,9 +129,9 @@ const Home = async ({ }) => {
             {speciality.secondary.description}
           </Paragraph>
         </div>
-      </MotionItem>
-      <MotionContainer tag='section' className='' >
-        <MotionItem tag='div' className='container ' whileInView={{ y: [30, 0], opacity: [0, 1] }}
+      </MotionContainer>
+      <MotionContainer tag='div' className='' >
+        <MotionContainer tag='div' className='container ' whileInView={{ y: [30, 0], opacity: [0, 1] }}
           transition={{ duration: 0.4 }} >
           <Paragraph >
             {testimonial.subtitle}
@@ -146,13 +143,13 @@ const Home = async ({ }) => {
           <Paragraph >
             {parseHtml(testimonial.description)}
           </Paragraph>
-        </MotionItem>
-        <MotionItem tag='div' className='w-full  mx-auto flex items-center justify-center' whileInView={{ y: [30, 0], opacity: [0, 1] }}
+        </MotionContainer>
+        <MotionContainer tag='div' className='w-full  mx-auto flex items-center justify-center' whileInView={{ y: [30, 0], opacity: [0, 1] }}
           transition={{ duration: 0.4 }}>
           <Image className='p-24  w-2/6 hidden lg:block' src='/images/testimonials-01.png' alt='' width={455} height={527} />
           <TestimonialSwiper list={features.list} listd={testimonial.list} />
           <Image className='p-24  w-2/6 hidden lg:block' src='/images/testimonials-01.png' alt='' width={455} height={527} />
-        </MotionItem>
+        </MotionContainer>
       </MotionContainer>
 
       <CTA />
