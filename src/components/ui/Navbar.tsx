@@ -15,7 +15,7 @@ const Navbar = ({ }) => {
   }
   const { logo, headerLinks } = headerElement
   return (
-    <div className='flex items-center  justify-between  py-8 px-12 z-50 border w-full relative '>
+    <div className='flex items-center  justify-between  py-8 px-12 z-50  w-full relative '>
       <Image src={logo.logo} alt={logo.logo_text} width={logo.logo_width} height={logo.logo_height} priority />
       <MotionContainer tag='ul' variant={container} className='lg:flex gap-8 items-center justify-center xs:hidden'
       >
