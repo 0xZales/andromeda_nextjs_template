@@ -10,14 +10,13 @@ export const metadata: Metadata = {
 }
 export default async function Page({ params, }: { params: { slug: string } }) {
   const post: any = await getPostData(params.slug)
-  console.log( parseHtml(post.contentHtml))
   return <div>
     <div className=' lg:p-20 p-8  flex items-center justify-center flex-col'>
       <div className='relative m-auto '>
         <Image src={post?.image} alt={`${post?.id}_image`} className='rounded-2xl' height={650} width={1126} />
       </div>
-    <div className='w-full px-36 py-6'>
-    <Paragraph size='lg' className='text-left mt-3 py-3 px-2 w-1/2 '>
+    <div className='w-full lg:px-36 py-6'>
+    <Paragraph size='lg' className='text-left mt-3 py-3 px-2 lg:w-1/2  w-full'>
         {post?.title}
       </Paragraph>
       <div className='w-full flex items-center gap-3 p-4'>

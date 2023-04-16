@@ -7,7 +7,6 @@ import * as headerElement from '@/components/index'
 import Link from 'next/link';
 import MotionContainer from '@/components/ui/MotionContainer';
 import { item, container } from '@/components';
-
 const Navbar = ({ }) => {
   const [isVisible,setIsVisible]= useState<boolean>(false)
   const mobileMenu=()=>{
@@ -51,7 +50,7 @@ const Navbar = ({ }) => {
 
 
             <MotionContainer className={` hover:text-primary item text-base `} tag='li' variant={item}>
-              <Link className={`active:text-primary hover:text-primary`} href={link.url}>   {link.name}</Link>
+              <Link className={`active:text-primary hover:text-primary`} href={link.url} onClick={mobileMenu}>   {link.name}</Link>
 
             </MotionContainer >
           </React.Fragment>)
